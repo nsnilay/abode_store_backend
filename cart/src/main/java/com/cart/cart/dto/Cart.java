@@ -11,29 +11,6 @@ public class Cart {
         private String price;
         private String pUrl;
 
-    public String getpUrl() {
-        return pUrl;
-    }
-
-    public void setpUrl(String pUrl) {
-        this.pUrl = pUrl;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getpName() {
-        return pName;
-    }
-
-    public void setpName(String pName) {
-        this.pName = pName;
-    }
 
     @Override
     public String toString() {
@@ -86,4 +63,29 @@ public class Cart {
     public void setPrice(String price) {
         this.price = price;
     }
+
+    public String getpUrl() {
+        return pUrl;
+    }
+
+    public void setpUrl(String pUrl) {
+        this.pUrl = pUrl;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getpName() {
+        return pName;
+    }
+
+    public void setpName(String pName) {
+        this.pName = pName;
+    }
+
 }

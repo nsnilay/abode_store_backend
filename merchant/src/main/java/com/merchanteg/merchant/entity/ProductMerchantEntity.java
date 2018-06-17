@@ -12,7 +12,6 @@ public class ProductMerchantEntity {
 
     @Id
     private String productMerchantId;
-    //private String merchantId;
     private String productId;
     private String price;
     private int currentStock;
@@ -28,7 +27,6 @@ public class ProductMerchantEntity {
     public String toString() {
         return "ProductMerchantEntity{" +
                 "productMerchantId='" + productMerchantId + '\'' +
-               // ", merchantId='" + merchantId + '\'' +
                 ", productId='" + productId + '\'' +
                 ", price='" + price + '\'' +
                 ", currentStock='" + currentStock + '\'' +

@@ -36,29 +36,17 @@ public class MerchantController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/getMerchantByProductId/{productId}")
     public List<ProductMerchant> getByProductId(@PathVariable("productId") String productId){
-
         List<ProductMerchant> productMerchants = merchantService.getByProductId(productId);
-
-        try {
-            Collections.sort(productMerchants,new SortByScore());
-
-        }catch (Exception e){
-            System.out.println(e.toString());
-
-        }
+        Collections.sort(productMerchants,new SortByScore());
 
         return productMerchants;
-    }
-
-    @RequestMapping("/test")
-    public String test()
-    {
-        return "successful";
     }
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/updateMerchantById")
     public Boolean updateMerchantById(@RequestBody List<MerchantUpdate> merchantUpdate){
+
+
 
         try{
             update(merchantUpdate);

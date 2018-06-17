@@ -35,21 +35,29 @@ public class CartController {
     private String url;
     @Value("${url.to.update}")
     private String urlUpdate;
+    @Value("${mail.subject.string}")
+    private String mailSubject;
+    @Value("${mail.content.string}")
+    private String mailContent;
 
     // Send request with GET method and default Headers.
 
-    RestTemplate restTemplate = new RestTemplate();
+    private RestTemplate restTemplate = new RestTemplate();
 
     @Autowired
     private CartService cartService;
 
-    //History method call
+    /* TODO:  there's a glitch in history Id...I've to generate some new random numbers
+
+     */
+
+    // Retrieve the history of customer by emailId
     @RequestMapping(method = RequestMethod.GET, value = "/cart/history/{emailId}")
     public List<History> getAllByEmailId (@PathVariable("emailId") String emailId){
         return cartService.getByEmailId(emailId);
     }
 
-    //on the click of cart
+    // Get the Cart of customer by his emailId
     @RequestMapping(method = RequestMethod.GET, value = "/cart/{emailId}")
     public List<Cart> getAllByEmailIdInCart (@PathVariable("emailId") String emailId){
         return  cartService.getByEmailIdInCart(emailId);
@@ -210,14 +218,16 @@ public class CartController {
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(userName,false));
         ((MimeMessage) message).setRecipients(Message.RecipientType.TO,InternetAddress.parse(carts.get(carts.size()-1).getEmailId()));
-        message.setSubject("Welcome to this App");
+        message.setSubject(mailSubject);
         StringBuilder stringBuilder = new StringBuilder();
         for(Cart cart: carts) {
             stringBuilder.append(cart.toString());
         }
-        //message1.setContent("textMessage","text/html");
-        message.setContent("Thank you for purchasing" + stringBuilder,"text/html");
+        message.setContent(mailContent + stringBuilder,"text/html");
         message.setSentDate(new Date());
+
+        /* Is Mimebody necessary?
+         */
 
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
         mimeBodyPart.setContent("textMessage","text/html");

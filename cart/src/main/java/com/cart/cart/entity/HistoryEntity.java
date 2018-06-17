@@ -20,21 +20,6 @@ public class HistoryEntity {
     private String price;
     private String pUrl;
 
-    public String getpUrl() {
-        return pUrl;
-    }
-
-    public void setpUrl(String pUrl) {
-        this.pUrl = pUrl;
-    }
-
-    public String getpName() {
-        return pName;
-    }
-
-    public void setpName(String pName) {
-        this.pName = pName;
-    }
 
     @Override
     public String toString() {
@@ -95,4 +80,21 @@ public class HistoryEntity {
     public void setPrice(String price) {
         this.price = price;
     }
+
+    public String getpUrl() {
+        return pUrl;
+    }
+
+    public void setpUrl(String pUrl) {
+        this.pUrl = pUrl;
+    }
+
+    public String getpName() {
+        return pName;
+    }
+
+    public void setpName(String pName) {
+        this.pName = pName;
+    }
+
 }
