@@ -147,7 +147,7 @@ public class CartController {
 //    }
 
     @RequestMapping(method = RequestMethod.GET,value = "/cart/buynow/{emailId}")
-    public String buynow1(@PathVariable("emailId") String emailId)
+    public Boolean buynow1(@PathVariable("emailId") String emailId)
     {
         try {
             List<Cart> carts = cartService.getByEmailIdInCart(emailId);
@@ -173,13 +173,13 @@ public class CartController {
             params.put("id",stringUpdate);
             RestTemplate restTemplate = new RestTemplate();
             String nameAndUrl= restTemplate.getForObject(urlUpdate, String.class, params);
-            //sendEmail(carts);
-            return nameAndUrl;
+            sendEmail(carts);
+            return true;
         }
         catch (Exception e)
         {
             System.out.println(e.toString());
-            return null;
+            return false;
         }
     }
 
